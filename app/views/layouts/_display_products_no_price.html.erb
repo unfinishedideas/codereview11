@@ -1,0 +1,9 @@
+<% if products.any? %>
+<ul>
+  <% products.each do |product| %>
+  <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+<% else %>
+<h3 class="subtitle">Nothing fresh to display</h3>
+<% end %>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Codereview10</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+  <% content_for(:navbar) do %>
+    <h4 class="navibar">
+      <a href="/">home</a> |
+      <%= link_to "products", products_path %>
+    </h4>
+  <% end %>
+
+  <div class="container">
+
+    <div class = "hero_header">
+      <h1 class="splash_text">Ultimate Review Aggregator</h1>
+    <%= yield :navbar %>
+    </div>
+    <div class="flashers">
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+    </div>
+    <%= yield %>
+  </div>
+
+</body>
+</html>

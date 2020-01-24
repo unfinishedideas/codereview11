@@ -1,0 +1,37 @@
+<div class="itembox">
+  <h2 class="titletext"><%= @product.name %></h2>
+  <h3 class="subtext">Price: <span class="price_text">$<%= @product.cost %></span></h3>
+  <h3 class="subtext">Country of Origin: <span class="country_text"><%= @product.country_of_origin %></span></h3>
+  <p><%= link_to "Edit properties", edit_product_path(@product) %></p>
+</div>
+<div class="itembox">
+
+
+  <% if @product.reviews.any? %>
+  <h3>Here are the reviews for this product:</h3>
+  <br>
+  <% @product.reviews.each do |review| %>
+  <ul>
+    <li>
+      <%= link_to review.author, product_review_path(@product, review) %>
+      <p>Score: <span class="rating_text"><%= review.rating %></span></p>
+      <p><%= review.content_body %></p>
+    </li>
+    <br>
+  </ul>
+  <% end %>
+  <% else %>
+  <p>No reviews are listed for this product yet.</p>
+  <% end %>
+
+  <p><%= link_to "Review this product", new_product_review_path(@product) %></p>
+
+  <p>
+    <%=
+    link_to "Delete Project", product_path(@product),
+    :data => {:confirm => "Really delete product?", :method => "delete"}
+    %>
+  </p>
+
+  <p><%= link_to "Return to products", products_path %></p>
+</div>
