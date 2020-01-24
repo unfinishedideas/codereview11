@@ -1,7 +1,7 @@
 require 'pry'
 
 class ReviewsController < ApplicationController
-
+  before_action :authorize, only: [:new, :edit, :update, :create, :destroy]
   # def index
   #   # Code for listing all products goes here.
   # end

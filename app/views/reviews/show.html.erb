@@ -3,7 +3,7 @@
   <h3>Author: <span class="author_name"><%= @review.author %></span></h3>
   <h3>Rating: <span class="rating_text"><%= @review.rating %></span></h3>
   <p><%= @review.content_body %></p>
-
+<% if current_user %>
   <p><%= link_to "Edit review", edit_product_review_path(@product, @review) %></p>
 
   <p>
@@ -13,6 +13,8 @@
     :method => "delete"}
     %>
   </p>
-
+  <% else %>
+  <%= link_to "Sign up", 'signup' %> or <%= link_to "Sign in ", '/signin' %> to edit this review
+<% end %>
   <p><%= link_to "Return to product", product_path(@product) %></p>
 </div>
