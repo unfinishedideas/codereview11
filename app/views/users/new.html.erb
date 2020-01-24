@@ -1,0 +1,18 @@
+<div class="itembox">
+  <h1> Sign up</h1>
+  <%= form_for @user do |f| %>
+  <%= f.label "Email" %>
+  <%= f.text_field :email %>
+  <br>
+  <%= f.label "Password" %>
+  <%= f.password_field :password %>
+  <br>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+  <br>
+  <%= f.label "Admin Powers" %>
+  <%= f.check_box :admin %>
+  <hr>
+  <%= f.submit "Sign Up" %>
+  <% end %>
+</div>
