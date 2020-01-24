@@ -16,21 +16,26 @@ class ReviewsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @user = current_user
-    binding.pry
     @review = @product.reviews.new(review_params)
     if @review.save
       flash[:notice] = "Review successfully added!"
       redirect_to product_path(@product)
     else
       flash[:alert] = "Something went wrong! Review not created."
-      render :new
+      render :show
     end
   end
 
   def edit
     @product = Product.find(params[:product_id])
     @review = Review.find(params[:id])
-    render :edit
+    @user = current_user
+    if current_user.id === @review.user_id
+      render :edit
+    else
+      flash[:alert] = "You are not authorized to edit this review"
+      render :show
+    end
   end
 
   def show
@@ -53,13 +58,19 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.destroy
-    flash[:notice] = "Review successfully destroyed!"
-    redirect_to product_path(@review.product)
+    if current_user.id === @review.user_id
+      @review.destroy
+      flash[:notice] = "Review successfully destroyed!"
+      redirect_to product_path(@review.product)
+    else
+      flash[:alert] = "You are not authorized to destroy this review"
+      @product = Product.find(params[:product_id])
+      render :show
+    end
   end
 
-  private
-  def review_params
-    params.require(:review).permit(:author, :rating, :content_body, :user_id)
+    private
+    def review_params
+      params.require(:review).permit(:author, :rating, :content_body, :user_id)
+    end
   end
-end
