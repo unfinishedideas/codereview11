@@ -29,7 +29,7 @@ h3 {
 input {
   color: white;
   background-color: rgb(81, 78, 88);
-  border-style: hidden hidden hidden solid; 
+  border-style: hidden hidden hidden solid;
   border-width: 10px;
   border-color: rgb(112, 153, 130);
   padding: 10px;
@@ -44,7 +44,7 @@ label {
 textarea {
   color: white;
   background-color: rgb(81, 78, 88);
-  border-style: hidden hidden hidden solid; 
+  border-style: hidden hidden hidden solid;
   border-width: 10px;
   border-color: rgb(112, 153, 130);
   padding: 10px;
@@ -139,4 +139,8 @@ ul {
   color:rgb(0, 255, 133);
   text-align: center;
   font-size: 25px;
+}
+
+.right {
+  float: right;
 }

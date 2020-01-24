@@ -13,30 +13,33 @@
   <% content_for(:navbar) do %>
   <h4 class="navibar">
     <a href="/">Home</a> |
-    <%= link_to "Products", products_path %> |
-    <% if current_user %>
-    <%= current_user.email %>
-    <% if current_user.admin %>
-    (Admin)
-    <% end %>
-    | <%= link_to "Sign out", '/signout' %>
-    <% else %>
-    <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
-    <% end %>
+    <%= link_to "Products", products_path %>
+
   </h4>
   <% end %>
 
   <div class="container">
 
     <div class = "hero_header">
+      <div class="right">
+      <% if current_user %>
+        <%= current_user.email %>
+        <% if current_user.admin %>
+        (Admin)
+        <% end %>
+        | <%= link_to "Sign out", '/signout' %>
+        <% else %>
+        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+        <% end %>
+      </div>
       <h1 class="splash_text">Mario's Ultimate Review Aggregator</h1>
       <%= yield :navbar %>
+      <div class="flashers">
+        <%= flash[:alert] %>
+        <%= flash[:notice] %>
+      </div>
     </div>
 
-    <div class="flashers">
-      <%= flash[:alert] %>
-      <%= flash[:notice] %>
-    </div>
     <%= yield %>
   </div>
 </body>
