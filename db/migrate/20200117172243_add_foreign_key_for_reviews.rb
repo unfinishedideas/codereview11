@@ -1,4 +1,4 @@
-class AddForeignKeyForReviews < ActiveRecord::Migration[6.0]
+class AddForeignKeyForReviews < ActiveRecord::Migration[5.2]
   def change
     add_foreign_key :reviews, :products
   end
