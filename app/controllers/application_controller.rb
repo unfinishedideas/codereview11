@@ -25,13 +25,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # code taken from here: https://stackoverflow.com/questions/3304597/rails-redirect-two-pages-back
-  def store_location
-    if request.post? || request.put?
-      session[:return_to] = request.env['HTTP_REFERER']
-    else
-      session[:return_to] = request.request_uri
-    end
-  end
+  # # code taken from here: https://stackoverflow.com/questions/3304597/rails-redirect-two-pages-back
+  # def store_location
+  #   if request.post? || request.put?
+  #     session[:return_to] = request.env['HTTP_REFERER']
+  #   else
+  #     session[:return_to] = request.request_uri
+  #   end
+  # end
 
 end

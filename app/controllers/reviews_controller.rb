@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
       redirect_to product_path(@product)
     else
       flash[:alert] = "Something went wrong! Review not created."
-      render :show
+      render :new
     end
   end
 
