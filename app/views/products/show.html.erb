@@ -6,10 +6,10 @@
   <h3 class="subtext">Price: <span class="price_text">$<%= @product.cost %></span></h3>
   <h3 class="subtext">Country of Origin: <span class="country_text"><%= @product.country_of_origin %></span></h3>
   <% if current_user && current_user.admin %>
-  <p><%= link_to "Edit properties", edit_product_path(@product) %></p>
+  <p><%= link_to "Edit properties (Admin)", edit_product_path(@product) %></p>
   <p>
     <%=
-    link_to "Delete Product", product_path(@product),
+    link_to "Delete Product (Admin)", product_path(@product),
     :data => {:confirm => "Really delete product?", :method => "delete"}
     %>
   </p>

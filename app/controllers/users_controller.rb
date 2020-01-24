@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    store_location
   end
 
   def create
