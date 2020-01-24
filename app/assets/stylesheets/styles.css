@@ -95,9 +95,20 @@ ul {
 }
 
 .grid_containment {
+  margin: auto;
+  width: 90%;
   display: grid;
-  grid-template-columns: 30% 40% 30%;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: auto auto;
+}
+
+.product_grid {
+  /* margin: auto; */
+  /* width: 90%; */
+  /* display: grid; */
+  /* grid-template-columns: 40% 60%; */
+  /* grid-auto-rows: 1fr; */
+  /* grid-template-rows: auto auto; */
 }
 
 .itembox {

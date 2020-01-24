@@ -8,12 +8,15 @@ class ReviewsController < ApplicationController
 
   def new
     @product = Product.find(params[:product_id])
+    @user = current_user
     @review = @product.reviews.new
     render :new
   end
 
   def create
     @product = Product.find(params[:product_id])
+    @user = current_user
+    binding.pry
     @review = @product.reviews.new(review_params)
     if @review.save
       flash[:notice] = "Review successfully added!"
@@ -57,6 +60,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:author, :rating, :content_body)
+    params.require(:review).permit(:author, :rating, :content_body, :user_id)
   end
 end

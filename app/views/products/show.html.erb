@@ -1,3 +1,6 @@
+
+<div class="product_grid">
+
 <div class="itembox">
   <h2 class="titletext"><%= @product.name %></h2>
   <h3 class="subtext">Price: <span class="price_text">$<%= @product.cost %></span></h3>
@@ -12,9 +15,8 @@
   </p>
   <% end %>
 </div>
+
 <div class="itembox">
-
-
   <% if @product.reviews.any? %>
   <h3>Here are the reviews for this product:</h3>
   <br>
@@ -39,4 +41,5 @@
 
 
   <p><%= link_to "Return to products", products_path %></p>
+</div>
 </div>
