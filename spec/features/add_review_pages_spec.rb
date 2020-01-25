@@ -3,6 +3,9 @@ require 'rails_helper'
 describe "the add a review process" do
 
   before(:each) do
+    Product.destroy_all
+    Review.destroy_all
+    User.destroy_all
     User.create!(:email => 'admin@admin.com', :password => '123', :password_confirmation => '123', :admin => true, :username => 'Admin Man')
   end
 
@@ -27,7 +30,7 @@ describe "the add a review process" do
     expect(page).to have_content('USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA USA')
   end
 
-  it "gives an error when no name is entered" do
+  it "gives an error when no review content is entered" do
     project = Product.create({name: "dope thing", cost: 5, country_of_origin: "USA" })
     get_admin
     visit products_path
@@ -36,7 +39,6 @@ describe "the add a review process" do
     fill_in 'Rating', :with => 5
     fill_in 'review_content_body', :with => ""
     click_on 'Create Review'
-    save_and_open_page
-    expect(page).to have_content "Author can't be blank"
+    expect(page).to have_content "Content body can't be blank"
   end
 end
