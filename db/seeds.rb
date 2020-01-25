@@ -13,18 +13,18 @@ User.create!(:email => 'admin@admin.com', :password => '123', :password_confirma
 
 uniquer = 1;
 20.times do |index|
-  name_a = Faker::Creature::Cat.name
+  name_a = Faker::Creature::Cat.name.downcase
   name_b = Faker::Hipster.word
   fullname = (name_a + " " + name_b + "#{uniquer}").titleize
   email = "#{name_a}@#{name_b}#{uniquer}.com"
-  password = '123'
 
   user_params = {
     :email => email,
-    :password => password,
-    :password_confirmation => password,
+    :password => '123',
+    :password_confirmation => '123',
     :admin => false,
-    :username => fullname}
+    :username => fullname
+  }
 
   User.create!(user_params)
   uniquer += 1
